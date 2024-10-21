@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Filtered Songs List</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>Filter Songs by Genre</h1>
+    <form id="filterForm">
+      <label for="genreSelect">Select Genre:</label>
+      <select id="genreSelect"></select>
+      <button
+        type="button"
+        id="filterBtn"
+      >
+        Filter
+      </button>
+    </form>
+    <div id="songList"></div>
+
+    <script>
+      $(document).ready(function () {
+        $.getJSON("./songs.json", function (data) {
+          let genres = new Set();
+
+          $.each(data, function (index, song) {
+            song.genre.forEach(function (genre) {
+              genres.add(genre);
+            });
+          });
+
+          genres.forEach(function (genre) {
+            $("#genreSelect").append(
+              `<option value="${genre}">${genre}</option>`
+            );
+          });
+          $("#genreSelect").append(`<option value="Reset">Reset</option>`);
+        });
+
+        $("#filterBtn").click(function () {
+          const selectedGenre = $("#genreSelect").val();
+          $("#songList").empty();
+
+          $.getJSON("songs.json", function (data) {
+            $.each(data, function (index, song) {
+              if (selectedGenre === "Reset") {
+                $("#songList").append(`<p><strong>${song.title}</strong></p>`);
+              }
+
+              if (song.genre.includes(selectedGenre)) {
+                $("#songList").append(`<p><strong>${song.title}</strong></p>`);
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
