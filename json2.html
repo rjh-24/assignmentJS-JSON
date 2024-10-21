@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>External file JSON Exercise</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script langauge="javascript">
+      $.get("./songs.json", function (data) {
+        console.log("raw data\n", data);
+        str = JSON.stringify(data);
+
+        str = "<ol>";
+        data.forEach((song) => {
+          str += `
+            <li>
+              Title: <strong>${song.title}</strong>
+              <br>
+              Artist: ${song.artist}
+              <br>
+              Genre: ${song.genre.join(", ")}
+              <br>
+              Released: ${song.yearReleased}
+              <br>
+              <br>
+            </li>
+          `;
+        });
+        str += "</ol>";
+        document.getElementById("json-list").innerHTML = str;
+      });
+    </script>
+    <div id="json-list">&nbsp;</div>
+  </body>
+</html>
