@@ -52,11 +52,10 @@
 
           $.getJSON("songs.json", function (data) {
             $.each(data, function (index, song) {
-              if (selectedGenre === "Reset") {
-                $("#songList").append(`<p><strong>${song.title}</strong></p>`);
-              }
-
-              if (song.genre.includes(selectedGenre)) {
+              if (
+                selectedGenre === "Reset" ||
+                song.genre.includes(selectedGenre)
+              ) {
                 $("#songList").append(`<p><strong>${song.title}</strong></p>`);
               }
             });
