@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Song List JSON</title>
+  </head>
+  <body>
+    <script language="javascript">
+      songList = [
+        {
+          title: "Words I Don't Remember",
+          artist: "How To Dress Well",
+          genre: ["Alternative R&B", "lo-fi"],
+        },
+        {
+          title: "Since You Asked Kindly",
+          artist: "BADBADNOTGOOD",
+          genre: ["Jazz", "Hip Hop"],
+        },
+        {
+          title: "Teeth",
+          artist: "The Japanese House",
+          genre: ["Indie Pop"],
+        },
+        {
+          title: "Will Do",
+          artist: "TV On The Radio",
+          genre: ["Indie Rock", "Art Rock"],
+        },
+        {
+          title: "Worry",
+          artist: "Jack Garratt",
+          genre: ["Indie Pop", "Alternative R&B"],
+        },
+        {
+          title: "Free Fall",
+          artist: "Love X Stereo",
+          genre: ["Electro", "Alternative"],
+        },
+        {
+          title: "About Summer",
+          artist: "Luli Lee",
+          genre: ["Indie Pop"],
+        },
+        {
+          title: "60'S CARDIN",
+          artist: "Glen Check",
+          genre: ["Electronic", "Indie"],
+        },
+        {
+          title: "Sana's Gloom",
+          artist: "City Girl",
+          genre: ["Electronic"],
+        },
+        {
+          title: "Butterfly Effect",
+          artist: "fox capture plan",
+          genre: ["Jazz"],
+        },
+      ];
+
+      strSongList = JSON.stringify(songList);
+      document.write(strSongList + "<br>");
+    </script>
+  </body>
+</html>
